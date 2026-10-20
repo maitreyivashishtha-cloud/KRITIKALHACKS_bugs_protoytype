@@ -1,0 +1,155 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display-brand);
+  /* PricePulse brand palette (Kritical Hacks 2026) — cream-dominant light theme */
+  --color-shell: #f7f6d7; /* dashboard shell — cream */
+  --color-panel: #fffdf2; /* card surface — ivory */
+  --color-panel2: #f3efcf; /* nested surface / hover — deeper cream */
+  --color-leaf: #69d863; /* vivid green — CTA fills, positive dots */
+  --color-leaf-ink: #2f8032; /* deep green — positive TEXT on cream */
+  --color-blush: #eab0c8; /* dusty pink — fills, borders, accents */
+  --color-rose: #b65877; /* deep rose — pink TEXT on cream */
+  --color-cream: #f7f6d7; /* ivory — text on wine / floral bands */
+  --color-wine: #6e1e3b; /* deep burgundy — canvas, headings, hero band */
+  --color-rosy: #c2436a; /* attention — overpriced / rising */
+  --color-mist: #96687c; /* muted wine-grey text */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 1rem;
+  /* Brand palette: cream #F7F6D7 · wine #6E1E3B · blush #EAB0C8 · leaf #69D863 */
+  --background: #6e1e3b;
+  --foreground: #f7f6d7;
+  --card: #fffdf2;
+  --card-foreground: #6e1e3b;
+  --popover: #fffdf2;
+  --popover-foreground: #6e1e3b;
+  --primary: #69d863;
+  --primary-foreground: #0c2910;
+  --secondary: #eab0c8;
+  --secondary-foreground: #40152a;
+  --muted: #f3efcf;
+  --muted-foreground: #96687c;
+  --accent: #fbeff4;
+  --accent-foreground: #6e1e3b;
+  --destructive: #c2436a;
+  --border: rgba(110, 30, 59, 0.14);
+  --input: rgba(110, 30, 59, 0.18);
+  --ring: #69d863;
+  --chart-1: #2f8032;
+  --chart-2: #b65877;
+  --chart-3: #6e1e3b;
+  --chart-4: #d48fb0;
+  --chart-5: #b8912a;
+  --sidebar: #fffdf2;
+  --sidebar-foreground: #6e1e3b;
+  --sidebar-primary: #69d863;
+  --sidebar-primary-foreground: #0c2910;
+  --sidebar-accent: #f3efcf;
+  --sidebar-accent-foreground: #6e1e3b;
+  --sidebar-border: rgba(110, 30, 59, 0.14);
+  --sidebar-ring: #69d863;
+}
+
+/* Single-theme app: .dark mirrors :root so an accidental class toggle stays coherent. */
+.dark {
+  --background: #6e1e3b;
+  --foreground: #f7f6d7;
+  --card: #fffdf2;
+  --card-foreground: #6e1e3b;
+  --popover: #fffdf2;
+  --popover-foreground: #6e1e3b;
+  --primary: #69d863;
+  --primary-foreground: #0c2910;
+  --secondary: #eab0c8;
+  --secondary-foreground: #40152a;
+  --muted: #f3efcf;
+  --muted-foreground: #96687c;
+  --accent: #fbeff4;
+  --accent-foreground: #6e1e3b;
+  --destructive: #c2436a;
+  --border: rgba(110, 30, 59, 0.14);
+  --input: rgba(110, 30, 59, 0.18);
+  --ring: #69d863;
+  --chart-1: #2f8032;
+  --chart-2: #b65877;
+  --chart-3: #6e1e3b;
+  --chart-4: #d48fb0;
+  --chart-5: #b8912a;
+  --sidebar: #fffdf2;
+  --sidebar-foreground: #6e1e3b;
+  --sidebar-primary: #69d863;
+  --sidebar-primary-foreground: #0c2910;
+  --sidebar-accent: #f3efcf;
+  --sidebar-accent-foreground: #6e1e3b;
+  --sidebar-border: rgba(110, 30, 59, 0.14);
+  --sidebar-ring: #69d863;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* wine canvas wrapped in the brand's floral pattern (peeks around the shell) */
+    background-image: url("/floral-bg.png");
+    background-size: 560px auto;
+    background-attachment: fixed;
+  }
+  /* Tiltortion is a single-weight display face — never fake-bold it */
+  .font-display {
+    font-synthesis-weight: none;
+  }
+  /* Descriptions read in Times New Roman per the team's pairing:
+     Tiltortion carries brand/headings/numerals, serif carries prose.
+     (font-display <p> elements keep Tiltortion — utilities beat base.) */
+  p {
+    font-family: "Times New Roman", Tinos, "Liberation Serif", Georgia, serif;
+  }
+  ::selection {
+    background: #eab0c8;
+    color: #40152a;
+  }
+}
