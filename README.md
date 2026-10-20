@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🐟 PricePulse
+#  PricePulse
 
 **Live Competitor Intelligence Engine — powered by TinyFish**
 
@@ -24,11 +24,11 @@ Catalogue: 6 household essentials (detergent, dishwash gel, floor cleaner, toile
 
 ---
 
-## 🎯 The Problem
+## The Problem
 
 Indian household-essentials retailers (and quick-commerce players) need to know how rivals price identical SKUs across Zomora, Swiggo, InstaBasket and AmazNow. However, competitor websites and apps often **block traditional web scrapers**, and prices are **hidden behind dynamic JavaScript widgets, flash-sale banners and region-specific offers**. Traditional data extraction tools fail on modern, dynamic websites, leaving companies with **outdated competitor data** — and pricing decisions based on stale information in a market where prices change daily.
 
-## 💡 The Solution
+##  The Solution
 
 PricePulse is a **dynamic pricing dashboard** that:
 
@@ -42,7 +42,7 @@ TinySearch ──▶ TinyFetch ──▶ Price Extraction ──▶ ML Engine �
  (find pages)   (render+clean)  (JSON-LD/text)     (forecast+anomaly)  (guardrails)
 ```
 
-## 🚀 Quickstart
+## Quickstart
 
 ```bash
 # 1. install dependencies
@@ -65,16 +65,16 @@ bun run dev        # http://localhost:3000
 > dashboard and paste your key (stored server-side, masked in responses), or set
 > `TINYFISH_API_KEY` in `.env` — get one from the [TinyFish API Keys page](https://tinyfish.ai).
 
-## 🔑 Environment Variables
+##  Environment Variables
 
 | Variable | Required | Description |
 |---|---|---|
-| `DATABASE_URL` | ✅ | SQLite file URL (`file:./db/custom.db`) |
+| `DATABASE_URL` |  | SQLite file URL (`file:./db/custom.db`) |
 | `TINYFISH_API_KEY` | — | TinyFish API key. Absent ⇒ demo mode. Can also be pasted in-app via **Settings → TinyFish API key** |
 | `TINYFISH_SEARCH_BASE` | — | Override search endpoint (default `https://api.search.tinyfish.ai`) |
 | `TINYFISH_FETCH_BASE` | — | Override fetch endpoint (default `https://api.fetch.tinyfish.ai`) |
 
-## 🐠 TinyFish Integration
+##  TinyFish Integration
 
 All web interaction goes through two TinyFish endpoints (see `src/lib/tinyfish.ts`):
 
@@ -103,7 +103,7 @@ Renders JavaScript-heavy pages, bypasses bot walls, and returns token-efficient 
 | Cached / stale data | `recency_minutes` + `ttl: 0` = live data |
 | Per-site brittle CSS selectors | One API for every site |
 
-## 🧠 The ML Engine (`src/lib/ml.ts`)
+## The ML Engine (`src/lib/ml.ts`)
 
 Pure TypeScript — zero dependencies, fully explainable, all prices in ₹ (Indian formatting via `Intl.NumberFormat("en-IN")`):
 
@@ -116,7 +116,7 @@ Pure TypeScript — zero dependencies, fully explainable, all prices in ₹ (Ind
    and two hard guardrails: **margin floor** (never below cost + floor%) and **step limit** (max ±N% per cycle).
 4. **Explainability** — every recommendation ships with a plain-English rationale shown in the dashboard.
 
-## 🎨 Design System
+##  Design System
 
 A bespoke floral-botanical look built for judging screens — cream-forward with wine bands:
 
@@ -133,17 +133,17 @@ A bespoke floral-botanical look built for judging screens — cream-forward with
 - **Floral background** — a seamless wine botanical pattern (`public/floral-bg.png`) tiles the canvas behind the shell and blooms across the hero and footer bands
 - **Layout** — cream floating shell with pill navigation, category filter chips, pipeline strip, KPI cards, reprice queue and a full-width price-intelligence chart
 
-## 📊 Features
+##  Features
 
-- 🎛 **Dashboard** — cream command-center shell: KPI cards, category filters, live market table with gap badges & trend arrows
-- 📈 **Price intelligence chart** — 45-day market view: our price vs every competitor, OLS forecast line, flash-sale anomalies
-- 🤖 **Recommendation feed** — one-click *Apply reprice* / *Dismiss*, confidence bars, plain-English rationales
-- ⚙️ **Repricing policy** — strategy, undercut %, max step %, margin floor, auto-apply toggle
-- 🔑 **In-app TinyFish key** — Settings → TinyFish API key switches the whole pipeline from demo simulator to live credits, no redeploy needed
-- 🧪 **Demo mode** — realistic simulated market so the hackathon demo never depends on network/API luck
-- 🧾 **Audit trail** — every scan logs TinySearch/TinyFetch usage counters (pages fetched, prices extracted, mode)
+-  **Dashboard** — cream command-center shell: KPI cards, category filters, live market table with gap badges & trend arrows
+-  **Price intelligence chart** — 45-day market view: our price vs every competitor, OLS forecast line, flash-sale anomalies
+-  **Recommendation feed** — one-click *Apply reprice* / *Dismiss*, confidence bars, plain-English rationales
+-  **Repricing policy** — strategy, undercut %, max step %, margin floor, auto-apply toggle
+-  **In-app TinyFish key** — Settings → TinyFish API key switches the whole pipeline from demo simulator to live credits, no redeploy needed
+-  **Demo mode** — realistic simulated market so the hackathon demo never depends on network/API luck
+-  **Audit trail** — every scan logs TinySearch/TinyFetch usage counters (pages fetched, prices extracted, mode)
 
-## 🏗 Architecture
+##  Architecture
 
 ```
 src/
@@ -167,15 +167,7 @@ prisma/schema.prisma                # Product · Competitor · PricePoint · Rec
 prisma/seed.ts                      # 45-day synthetic Indian market history (6 household SKUs × 4 rivals, ₹)
 ```
 
-## 🎬 2-Minute Demo Script (for judges)
-
-1. Open the dashboard — **DEMO MODE** badge shows; GharKart's 45-day market history across Zomora / Swiggo / InstaBasket / AmazNow is live, all prices in ₹.
-2. Point out the flash-sale dip in the chart → *anomaly detection* excluded it from repricing decisions.
-3. Hit **Run full scan** → watch the 4-stage pipeline (TinySearch → TinyFetch → Extract → ML).
-4. Review a recommendation card: rationale explains policy, forecast, anomalies, guardrails (e.g. "Lowest live competitor is ₹466.16 — InstaBasket").
-5. Click **Apply reprice** → GharKart's price moves; chart and KPIs update instantly.
-6. Open **Settings** → switch strategy to *MATCH* → re-scan → recommendations change.
-7. Flip to **LIVE**: drop a `TINYFISH_API_KEY` into `.env`, restart, run a scan — real Indian e-commerce pages, real prices.
+eal prices.
 
 ## 🗺 Roadmap
 
